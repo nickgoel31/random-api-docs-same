@@ -1,0 +1,31 @@
+---
+title: Get Stocks API
+description: Returns sample stock data.
+---
+
+```mermaid
+flowchart TD
+    A[Client Request /api/get-stocks] --> B[Server Handler];
+    B --> C[Create sampleStockData array];
+    C --> D[Respond with JSON {success:true, data:sampleStockData}];
+    D --> E[Client receives data];
+```
+
+**Endpoint**
+
+`GET /api/get-stocks`
+
+**Response**
+
+```json
+{
+  "success": true,
+  "data": [
+    { "symbol": "AAPL", "price": 145.32, "change": "+1.25%" },
+    { "symbol": "GOOGL", "price": 2734.57, "change": "-0.75%" },
+    { "symbol": "AMZN", "price": 3342.88, "change": "+0.50%" }
+  ]
+}
+```
+
+This endpoint provides a static list of sample stock information useful for front‑end development and testing.
