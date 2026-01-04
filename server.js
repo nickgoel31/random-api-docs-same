@@ -51,6 +51,18 @@ app.get('/api/get-weather', (req, res) => {
   });
 });
 
+app.get('/api/get-news', (req, res) => {
+  const sampleNewsData = [
+    { id: 1, title: "Tech Company Releases New Product", summary: "A leading tech company has unveiled its latest innovation." },
+    { id: 2, title: "Market Trends in 2024", summary: "An analysis of the current market trends and predictions for the year." },
+    { id: 3, title: "Startup Secures Funding", summary: "A promising startup has secured significant funding to expand its operations." }
+  ];  
+  res.json({
+    success: true,
+    data: sampleNewsData
+  });
+});
+
 // Start server
 app.listen(port, () => {
   console.log(`API running at http://localhost:${port}`);
