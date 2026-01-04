@@ -1,0 +1,116 @@
+---
+title: "Server API Documentation"
+description: "Documentation for the Express server providing feature endpoints."
+---
+
+## Overview
+
+This file `server.js` sets up a simple Express server that serves a list of software features and provides endpoints to retrieve a random feature or the full list.
+
+## Prerequisites
+
+- Node.js
+- npm
+- Packages: `express`, `cors`
+
+## Installation
+
+```bash
+npm install express cors
+```
+
+## Running the Server
+
+```bash
+node server.js
+```
+
+The server listens on **port 3001** and logs the URL.
+
+## Data Source
+
+The server defines an in‑memory array `features` containing objects with `id`, `name`, `difficulty`, and `category`.
+
+## Endpoints
+
+### GET `/api/feature/random`
+
+Returns a random feature.
+
+Response format:
+
+```json
+{
+  "success": true,
+  "timestamp": "2023-01-01T12:00:00.000Z",
+  "data": {
+    "id": 1,
+    "name": "Dark Mode Toggle",
+    "difficulty": "Easy",
+    "category": "UI"
+  }
+}
+```
+
+### GET `/api/features`
+
+Returns the full list of features.
+
+Response format:
+
+```json
+{
+  "success": true,
+  "count": 6,
+  "data": [
+    {
+      "id": 1,
+      "name": "Dark Mode Toggle",
+      "difficulty": "Easy",
+      "category": "UI"
+    }
+    // ... other feature objects
+  ]
+}
+```
+
+## Code Walkthrough
+
+```js
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const port = 3001;
+
+app.use(cors());
+app.use(express.json());
+
+// 1. Data Source: A list of random software features
+const features = [
+  { id: 1, name: "Dark Mode Toggle", difficulty: "Easy", category: "UI" },
+  { id: 2, name: "Real-time Chat", difficulty: "Hard", category: "Communication" },
+  { id: 3, name: "Drag and Drop Dashboard", difficulty: "Medium", category: "UX" },
+  { id: 4, name: "Voice Command Integration", difficulty: "Hard", category: "Accessibility" },
+  { id: 5, name: "PDF Export", difficulty: "Medium", category: "Reporting" },
+  { id: 6, name: "Biometric Login", difficulty: "Hard", category: "Security" }
+];
+
+// 2. Endpoint: Get a random feature
+app.get('/api/feature/random', (req, res) => {
+  const randomIndex = Math.floor(Math.random() * features.length);
+  const randomFeature = features[randomIndex];
+  res.json({ success: true, timestamp: new Date().toISOString(), data: randomFeature });
+});
+
+// 3. Endpoint: Get all features
+app.get('/api/features', (req, res) => {
+  res.json({ success: true, count: features.length, data: features });
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`API running at http://localhost:${port}`);
+});
+```
+
+The file imports Express and CORS, configures middleware, defines a static feature list, implements two GET routes, and starts listening on the specified port.
