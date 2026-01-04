@@ -1,0 +1,91 @@
+---
+title: "HomepageFeatures Component"
+description: "Documentation for the HomepageFeatures component used on the Docusaurus homepage."
+---
+
+```js
+import clsx from 'clsx';
+import Heading from '@theme/Heading';
+import styles from './styles.module.css';
+```
+
+## Overview
+
+`HomepageFeatures` displays a list of feature cards on the homepage. Each card shows an SVG illustration, a title, and a description.
+
+## FeatureList
+
+An array of objects, each containing:
+- **title** – The feature title.
+- **Svg** – The imported SVG component.
+- **description** – JSX fragment with the feature description.
+
+```js
+const FeatureList = [
+  {
+    title: 'Easy to Use',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: (<>…</>),
+  },
+  // …other features
+];
+```
+
+## `Feature` component
+
+Renders a single feature card.
+
+```jsx
+function Feature({Svg, title, description}) {
+  return (
+    <div className={clsx('col col--4')}>
+      <div className="text--center">
+        <Svg className={styles.featureSvg} role="img" />
+      </div>
+      <div className="text--center padding-horiz--md">
+        <Heading as="h3">{title}</Heading>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+## `HomepageFeatures` component
+
+Maps over `FeatureList` and renders a responsive grid of `Feature` components.
+
+```jsx
+export default function HomepageFeatures() {
+  return (
+    <section className={styles.features}>
+      <div className="container">
+        <div className="row">
+          {FeatureList.map((props, idx) => (
+            <Feature key={idx} {...props} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+## Props
+
+The component does **not** accept external props; it relies on the internal `FeatureList`.
+
+## Usage Example
+
+```jsx
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+
+function HomePage() {
+  return (
+    <main>
+      {/* other sections */}
+      <HomepageFeatures />
+    </main>
+  );
+}
+```
