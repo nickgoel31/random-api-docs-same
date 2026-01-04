@@ -1,0 +1,79 @@
+---
+title: "Home Page Component"
+sidebar_label: "Home Page"
+---
+
+# Home Page (`index.js`)
+
+This file defines the main landing page for a Docusaurus site. It composes the site header and a feature list inside the default Docusaurus `Layout` component.
+
+## Imports
+
+```js
+import clsx from 'clsx';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Heading from '@theme/Heading';
+import styles from './index.module.css';
+```
+- **clsx** – utility for conditionally joining CSS class names.
+- **Link** – Docusaurus‑aware link component that handles client‑side navigation.
+- **useDocusaurusContext** – hook that provides access to the site configuration (title, tagline, etc.).
+- **Layout** – top‑level page wrapper that injects the site header, footer, and SEO metadata.
+- **HomepageFeatures** – custom component that renders the feature grid shown on the home page.
+- **Heading** – theme‑styled heading component.
+- **styles** – CSS module scoped to this page (`index.module.css`).
+
+## `HomepageHeader` Component
+
+```jsx
+function HomepageHeader() {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+      <div className="container">
+        <Heading as="h1" className="hero__title">{siteConfig.title}</Heading>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.buttons}>
+          <Link className="button button--secondary button--lg" to="/docs/intro">
+            Docusaurus Tutorial - 5min ⏱️
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+}
+```
+- Retrieves `siteConfig` (title & tagline) from the Docusaurus context.
+- Uses `clsx` to combine the default hero classes with a custom CSS module class.
+- Renders a large heading, subtitle, and a call‑to‑action button linking to the tutorial.
+
+## `Home` Component (default export)
+
+```jsx
+export default function Home() {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <Layout
+      title={`Hello from ${siteConfig.title}`}
+      description="Description will go into a meta tag in <head />">
+      <HomepageHeader />
+      <main>
+        <HomepageFeatures />
+      </main>
+    </Layout>
+  );
+}
+```
+- Wraps the page in `Layout`, providing a dynamic `title` and a static `description` meta tag.
+- Renders `HomepageHeader` followed by the `HomepageFeatures` component inside a `<main>` element.
+
+## How to Modify
+
+1. **Change the hero text** – edit `siteConfig.title` or `siteConfig.tagline` in `docusaurus.config.js`.
+2. **Replace the CTA button** – modify the `Link` component’s `to` prop and inner text.
+3. **Add more sections** – insert additional components after `<HomepageFeatures />` inside the `<main>` block.
+
+---
