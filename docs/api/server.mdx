@@ -1,0 +1,68 @@
+---
+title: Server API Documentation
+sidebar_label: Server API
+description: API endpoints for the server
+---
+
+## Overview
+
+The server API is built using Express Page Page and provides endpoints for retrieving software features.
+
+## Endpoints
+
+### Page Page Page Get a Random Feature
+
+*   **Endpoint:** `/api/feature/random`
+*   **Method:** `GET`
+*   **Response:**
+    ```json
+{
+  " Page Page success": true,
+  "timestamp": " Page Page ISO timestamp",
+  "data": {
+    "id": number,
+    "name": string,
+    "difficulty": string,
+    "category": string
+  }
+}
+```
+
+Returns a random software feature from the list of features.
+
+### Get All Features
+
+*   **Endpoint:** `/api/features`
+*   **Method:** `GET`
+*   **Response:**
+    ```json
+{
+  "success": true,
+  "count": number,
+  "data": [ era Page fe felon Page {
+    "id": number,
+    "name": string,
+    "difficulty": string,
+    "category": string
+  }
+]}
+```
+
+Returns a list of all software features.
+
+## Data Source
+
+The API uses a static list of software features as its data source. The features are defined as follows:
+
+*   `id`: Unique identifier for the feature
+*   `name`: Name of the feature
+*   `difficulty`: Difficulty level of implementing the feature (Easy, Medium, Hard)
+*   `category`: Category of the feature (e.g., UI, Communication, UX, etc.)
+
+## Server Configuration
+
+The server is configured to use CORS and parse JSON requests. It listens on port 3001.
+
+## Usage
+
+To start the server, run the `server.js` file using Node.js. The API will be available at `http://localhost:3001`.
