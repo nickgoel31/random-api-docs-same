@@ -37,6 +37,20 @@ app.get('/api/features', (req, res) => {
   });
 });
 
+app.get('/api/get-weather', (req, res) => {
+  const sampleWeatherData = {
+    location: "San Francisco",
+    temperature: "18°C",
+    condition: "Partly Cloudy",
+    humidity: "72%",
+    windSpeed: "15 km/h"
+  };
+  res.json({
+    success: true,
+    data: sampleWeatherData
+  });
+});
+
 // Start server
 app.listen(port, () => {
   console.log(`API running at http://localhost:${port}`);
