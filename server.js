@@ -63,6 +63,18 @@ app.get('/api/get-news', (req, res) => {
   });
 });
 
+app.get('/api/get-stocks', (req, res) => {
+  const sampleStockData = [
+    { symbol: "AAPL", price: 145.32, change: "+1.25%" },
+    { symbol: "GOOGL", price: 2734.57, change: "-0.75%" },
+    { symbol: "AMZN", price: 3342.88, change: "+0.50%" }
+  ];
+  res.json({
+    success: true,
+    data: sampleStockData
+  });
+});
+
 // Start server
 app.listen(port, () => {
   console.log(`API running at http://localhost:${port}`);
