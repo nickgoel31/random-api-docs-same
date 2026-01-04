@@ -1,7 +1,7 @@
 
 # Docify Configuration
 docs:
-  
+  path: "docs"
   # Ignore specific files
   ignore:
     - "src/internal/**"
