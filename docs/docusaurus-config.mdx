@@ -1,0 +1,154 @@
+---
+title: "Docusaurus Configuration"
+description: "Documentation of the docusaurus.config.js file."
+---
+# Docusaurus Configuration (`docusaurus.config.js`)
+
+This file defines the site‑wide configuration for a Docusaurus project. It is written in JavaScript with TypeScript checking enabled (`// @ts-check`).
+
+## Basic Site Information
+
+```js
+title: 'My Site',
+tagline: 'Dinosaurs are cool',
+favicon: 'img/favicon.ico',
+```
+- **title** – The name shown in the browser tab and navbar.
+- **tagline** – Short description displayed on the homepage.
+- **favicon** – Path to the favicon file.
+
+## URL Settings
+
+```js
+url: 'https://your-docusaurus-site.example.com',
+baseUrl: '/',
+```
+- **url** – Production URL of the site.
+- **baseUrl** – Base path under which the site is served.
+
+## Future Flags
+
+```js
+future: { v4: true },
+```
+Enables compatibility with upcoming Docusaurus v4 features.
+
+## GitHub Pages Deployment
+
+```js
+organizationName: 'facebook',
+projectName: 'docusaurus',
+```
+Used when deploying to GitHub Pages.
+
+## Broken Links Handling
+
+```js
+onBrokenLinks: 'throw',
+```
+The build will fail if any broken links are detected.
+
+## Internationalization (`i18n`)
+
+```js
+i18n: {
+  defaultLocale: 'en',
+  locales: ['en'],
+},
+```
+Configures the default language and supported locales.
+
+## Presets
+
+The classic preset bundles docs, blog, and theme settings.
+
+```js
+presets: [
+  [
+    'classic',
+    {
+      docs: {
+        sidebarPath: './sidebars.js',
+        editUrl: 'https://github.com/facebook/docusaurus/.../',
+      },
+      blog: {
+        showReadingTime: true,
+        feedOptions: { type: ['rss', 'atom'], xslt: true },
+        editUrl: 'https://github.com/facebook/docusaurus/.../',
+        onInlineTags: 'warn',
+        onInlineAuthors: 'warn',
+        onUntruncatedBlogPosts: 'warn',
+      },
+      theme: { customCss: './src/css/custom.css' },
+    },
+  ],
+],
+```
+- **docs.sidebarPath** – Path to the sidebar configuration.
+- **editUrl** – URL used for “Edit this page” links.
+- **blog** – Blog‑specific options.
+- **theme.customCss** – Path to custom CSS.
+
+## Theme Configuration (`themeConfig`)
+
+```js
+themeConfig: {
+  image: 'img/docusaurus-social-card.jpg',
+  colorMode: { respectPrefersColorScheme: true },
+  navbar: { /* see below */ },
+  footer: { /* see below */ },
+  prism: { theme: prismThemes.github, darkTheme: prismThemes.dracula },
+},
+```
+
+### Navbar
+
+```js
+navbar: {
+  title: 'My Site',
+  logo: { alt: 'My Site Logo', src: 'img/logo.svg' },
+  items: [
+    { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Tutorial' },
+    { to: '/blog', label: 'Blog', position: 'left' },
+    { href: 'https://github.com/facebook/docusaurus', label: 'GitHub', position: 'right' },
+  ],
+},
+```
+
+### Footer
+
+```js
+footer: {
+  style: 'dark',
+  links: [
+    { title: 'Docs', items: [{ label: 'Tutorial', to: '/docs/intro' }] },
+    { title: 'Community', items: [
+        { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/docusaurus' },
+        { label: 'Discord', href: 'https://discordapp.com/invite/docusaurus' },
+        { label: 'X', href: 'https://x.com/docusaurus' },
+      ]},
+    { title: 'More', items: [
+        { label: 'Blog', to: '/blog' },
+        { label: 'GitHub', href: 'https://github.com/facebook/docusaurus' },
+      ]},
+  ],
+  copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+},
+```
+
+### Prism (Syntax Highlighting)
+
+```js
+prism: {
+  theme: prismThemes.github,
+  darkTheme: prismThemes.dracula,
+},
+```
+
+## Export
+
+The configuration object is exported as the default export:
+
+```js
+export default config;
+```
