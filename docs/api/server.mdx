@@ -1,0 +1,74 @@
+---
+title: "Express Feature API Server"
+sidebar_label: "Server"
+---
+
+# Overview
+
+This file `server.js` implements a simple Express server that provides a mock API for software feature data.
+
+## Features
+
+- CORS enabled
+- JSON body parsing
+- In‑memory list of feature objects
+- Two endpoints:
+  - `GET /api/feature/random` – returns a random feature
+  - `GET /api/features` – returns the full list
+
+## Code Walkthrough
+
+```js
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const port = 3001;
+
+app.use(cors());
+app.use(express.json());
+
+// Data source
+const features = [
+  { id: 1, name: "Dark Mode Toggle", difficulty: "Easy", category: "UI" },
+  { id: 2, name: "Real-time Chat", difficulty: "Hard", category: "Communication" },
+  { id: 3, name: "Drag and Drop Dashboard", difficulty: "Medium", category: "UX" },
+  { id: 4, name: "Voice Command Integration", difficulty: "Hard", category: "Accessibility" },
+  { id: 5, name: "PDF Export", difficulty: "Medium", category: "Reporting" },
+  { id: 6, name: "Biometric Login", difficulty: "Hard", category: "Security" }
+];
+
+// Endpoints
+app.get('/api/feature/random', (req, res) => {
+  const randomIndex = Math.floor(Math.random() * features.length);
+  const randomFeature = features[randomIndex];
+  res.json({ success: true, timestamp: new Date().toISOString(), data: randomFeature });
+});
+
+app.get('/api/features', (req, res) => {
+  res.json({ success: true, count: features.length, data: features });
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`API running at http://localhost:${port}`);
+});
+```
+
+## Running the Server
+
+```bash
+node server.js
+```
+
+The server will listen on **http://localhost:3001**.
+
+## Example Requests
+
+```bash
+curl http://localhost:3001/api/feature/random
+curl http://localhost:3001/api/features
+```
+
+## Extending
+
+Add more routes, connect to a database, or integrate authentication as needed.
