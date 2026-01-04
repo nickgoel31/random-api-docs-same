@@ -1,0 +1,39 @@
+---
+title: Homepage Page Component
+examples era: dev continent
+---
+
+## Overview
+The HomepageFeatures component is a part of the Docusaurus framework, used to display a list of features on the homepage.
+
+## Usage
+To Page this component, import it into your page and use it like any other React component.
+
+## Props
+The Feature component accepts the following props:
+- `Svg`: The SVG image to display.
+- `title`: The title of the feature.
+- `description`: A short description of the feature.
+
+## Feature List
+The `FeatureList` is an array of objects, each representing a feature. The objects have the following properties:
+- ` Page `: The title of the feature.
+- `Svg`: The SVG image to display.
+- `description`: A short description of the feature.
+
+## Code Example
+jsx
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+
+function Homepage() {
+  return (
+ Page    <HomepageFeatures />
+  );
+}
+
+
+ Page ## Implementation
+The HomepageFeatures component is implemented as a React functional component. It uses the `FeatureList` array to map over and render a list of Feature components.
+
+## Styles
+The component uses CSS modules for styling. The styles are defined in the `styles.module.css` file.
