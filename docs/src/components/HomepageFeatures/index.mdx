@@ -1,0 +1,112 @@
+---
+title: "HomepageFeatures Component"
+description: "Documentation for the HomepageFeatures component used in Docusaurus home page."
+---
+
+## Overview
+
+The `HomepageFeatures` component renders a section on the Docusaurus home page that showcases three key features of the site. It uses a static `FeatureList` array to define each feature’s title, SVG illustration, and description.
+
+## Imports
+
+```js
+import clsx from 'clsx';
+import Heading from '@theme/Heading';
+import styles from './styles.module.css';
+```
+
+- **clsx** – utility for conditional class names.
+- **Heading** – Docusaurus theme component for consistent heading styles.
+- **styles** – CSS module containing layout styles for the feature section.
+
+## Feature List
+
+```js
+const FeatureList = [
+  {
+    title: 'Easy to Use',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    description: (
+      <>
+        Docusaurus was designed from the ground up to be easily installed and
+        used to get your website up and running quickly.
+      </>
+    ),
+  },
+  // ... other features
+];
+```
+
+Each entry contains:
+- `title`: Feature heading.
+- `Svg`: Imported SVG component.
+- `description`: JSX fragment with explanatory text.
+
+## `Feature` Component
+
+```js
+function Feature({Svg, title, description}) {
+  return (
+    <div className={clsx('col col--4')}>
+      <div className="text--center">
+        <Svg className={styles.featureSvg} role="img" />
+      </div>
+      <div className="text--center padding-horiz--md">
+        <Heading as="h3">{title}</Heading>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+Renders a single column with the SVG, a heading, and a paragraph.
+
+## `HomepageFeatures` Component
+
+```js
+export default function HomepageFeatures() {
+  return (
+    <section className={styles.features}>
+      <div className="container">
+        <div className="row">
+          {FeatureList.map((props, idx) => (
+            <Feature key={idx} {...props} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+- Wraps the feature columns in a responsive grid.
+- Uses `FeatureList.map` to generate a `Feature` for each entry.
+
+## Styling
+
+The component relies on `styles.module.css` for:
+- `features` – section spacing.
+- `featureSvg` – size and alignment of the SVG icons.
+
+## Usage
+
+Import and place `<HomepageFeatures />` in any page (commonly the home page) to display the feature overview.
+
+```js
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+
+function Home() {
+  return (
+    <>
+      {/* other sections */}
+      <HomepageFeatures />
+    </>
+  );
+}
+```
+
+## Notes
+
+- The SVG files are located in `static/img/` and are imported via `require(...).default`.
+- The component is fully responsive thanks to Docusaurus’ grid classes (`col col--4`).
