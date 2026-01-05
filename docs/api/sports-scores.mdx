@@ -1,0 +1,55 @@
+---
+title: Sports Scores Endpoint
+description: Retrieve real-time (sample) sports scores data.
+---
+
+## `/api/get-sports-scores`
+
+This new endpoint allows clients to fetch the latest sports scores and match statuses.
+
+### Request
+
+| Method | Path | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/get-sports-scores` | Fetches a list of recent sports matches and their scores. |
+
+**Parameters:**
+
+This endpoint requires no query parameters or request body.
+
+### Response
+
+The response is a JSON object containing a list of sports scores.
+
+**Success Response (200 OK):**
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "match": "Team A vs Team B",
+      "score": "2-1",
+      "status": "Finished"
+    },
+    {
+      "match": "Team C vs Team D",
+      "score": "0-0",
+      "status": "Ongoing"
+    },
+    {
+      "match": "Team E vs Team F",
+      "score": "1-3",
+      "status": "Finished"
+    }
+  ]
+}
+```
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `success` | `boolean` | Indicates if the request was successful. Always `true` on 200 OK. |
+| `data` | `array` | An array of match objects. |
+| `data[].match` | `string` | Description of the teams playing. |
+| `data[].score` | `string` | The current score of the match. |
+| `data[].status` | `string` | The current status of the match (e.g., "Finished", "Ongoing"). |
