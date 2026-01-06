@@ -1,0 +1,1 @@
+Write documentation for the feature "{feature-name}".  Cover: - What the feature does (simple explanation) - Why it exists / problem it solves - How users can use it (step-by-step if needed) - Any important limitations or edge cases - One short real-world example  Tone: clear, practical, beginner-friendly. Avoid marketing fluff. Focus on clarity.
