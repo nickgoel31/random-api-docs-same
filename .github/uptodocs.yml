@@ -177,11 +177,7 @@ docs:
     name: "Feature Documentation"
     path: ".github/templates/feature-template.md"
     description: "Explains a product feature clearly for end users and developers."
-    - slug: "team-api"
-      name: "Team API Standard"
-      # Option A: Point to a file in the repo (Recommended)
-      path: ".github/uptodocs/templates/api-standard.md"
-      description: "Our company standard for endpoints"
+   
       # Option B: Inline content (Good for short snippets)
     # content: |
     # Bug: ${TITLE}
