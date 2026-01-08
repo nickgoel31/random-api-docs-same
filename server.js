@@ -75,17 +75,7 @@ app.get('/api/get-stocks', (req, res) => {
   });
 });
 
-app.get('/api/get-sports-scores', (req, res) => {
-  const sampleSportsScores = [
-    { match: "Team A vs Team B", score: "2-1", status: "Finished" },
-    { match: "Team C vs Team D", score: "0-0", status: "Ongoing" },
-    { match: "Team E vs Team F", score: "1-3", status: "Finished" }
-  ];
-  res.json({
-    success: true,
-    data: sampleSportsScores
-  });
-});
+
 
 // Start server
 app.listen(port, () => {
