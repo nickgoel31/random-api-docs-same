@@ -130,9 +130,9 @@ docs:
   # --------------------------------
   # Only monitor code changes in these paths.
   #
-  scope:
-    path:
-      - "src/**"
+  # scope:
+  #   path:
+  #     - "src/**"
 
   # --------------------------------
   # 12. Monorepo Support (Pro / Enterprise)
