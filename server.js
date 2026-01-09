@@ -75,6 +75,24 @@ app.get('/api/get-stocks', (req, res) => {
   });
 });
 
+app.get('/api/get-clients', (req, res) => {
+  const sampleClientData = [
+    {
+      name: "reaper",
+      age:19
+    },
+    {
+      name: "harsh",
+      age:21
+    }
+  ]
+
+  res.json({
+    success:true,
+    data: sampleClientData
+  })
+})
+
 
 
 // Start server
