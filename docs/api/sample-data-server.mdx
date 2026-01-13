@@ -1,0 +1,82 @@
+---title: Sample Data API Server
+sidebar_label: Sample Data API
+---
+
+# Sample Data API Server
+
+Welcome! This document explains the **Sample Data API Server**, which is a simple, local Express server designed to provide mock data for your development and testing needs.
+
+## What It Does
+
+This server runs locally on your machine (defaulting to `http://localhost:3001`) and exposes several REST API endpoints. It serves hardcoded JSON data for common application elements like software features, weather, news, and stock prices.
+
+## Why It Exists
+
+When you're building a new frontend application or a component, you often need a reliable, quick source of data without the hassle of setting up a full database or dealing with external API rate limits and keys.
+
+This server solves that problem by giving you a **dependency-free, local mock backend**. You can start building your UI immediately, knowing the data structure will be consistent.
+
+## How to Use It
+
+To get this server running, you'll need **Node.js** installed on your system.
+
+### 1. Setup
+
+1.  Save the provided code as a file named `server.js`.
+2.  Open your terminal in the same directory and install the required packages:
+
+    ```bash
+npm install express cors
+    ```
+
+### 2. Run the Server
+
+Start the server using Node.js:
+
+```bash
+node server.js
+```
+
+You should see the confirmation message: `API running at http://localhost:3001`.
+
+### 3. Available Endpoints
+
+You can now access the following endpoints from your browser or any HTTP client (like `fetch` or Postman):
+
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/features` | Returns the full list of sample software features. |
+| `GET` | `/api/feature/random` | Returns a single, randomly selected feature. |
+| `GET` | `/api/get-weather` | Returns static sample weather data. |
+| `GET` | `/api/get-news` | Returns a list of static sample news articles. |
+| `GET` | `/api/get-stocks` | Returns a list of static sample stock prices. |
+
+## Important Limitations
+
+Keep in mind that this is a **mock server** for development purposes:
+
+*   **Static Data:** All data is hardcoded in the `server.js` file. Any changes you make to the data will require restarting the server.
+*   **No Persistence:** There is no database. You cannot use `POST`, `PUT`, or `DELETE` requests to modify the data.
+*   **CORS Enabled:** The server uses `cors()` to allow requests from any origin, which is great for local development but **not secure for production use**.
+
+## Real-World Example
+
+Here is how you might fetch the list of all features in a React component or a simple JavaScript file:
+
+```javascript
+async function fetchFeatures() {
+  try {
+    const response = await fetch('http://localhost:3001/api/features');
+    const result = await response.json();
+    
+    if (result.success) {
+      console.log('Total features:', result.count);
+      console.log('First feature:', result.data[0]);
+    }
+  } catch (error) {
+    console.error('Could not fetch features:', error);
+  }
+}
+
+fetchFeatures();
+```
