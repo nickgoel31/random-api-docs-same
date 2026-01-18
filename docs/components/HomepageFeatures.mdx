@@ -1,0 +1,47 @@
+---
+title: "HomepageFeatures Component"
+description: "Renders a list of feature cards on the homepage."
+---
+
+## Overview
+
+`HomepageFeatures` is a React component used in Docusaurus sites to display a set of feature cards on the homepage. It internally defines a static `FeatureList` array and renders each entry using the `Feature` sub‑component.
+
+## Props
+
+The component does not accept any props.
+
+### Feature sub‑component
+
+`Feature` receives the following props:
+
+- `Svg` (React component) – The SVG illustration for the feature.
+- `title` (string) – Title of the feature.
+- `description` (JSX) – Description content.
+
+## Usage
+
+```jsx
+import HomepageFeatures from '@site/src/components/HomepageFeatures';
+
+function HomePage() {
+  return (
+    <>
+      {/* other sections */}
+      <HomepageFeatures />
+    </>
+  );
+}
+```
+
+## Implementation Details
+
+- Uses `clsx` for conditional class names.
+- Imports `Heading` from `@theme/Heading`.
+- Styles are defined in `styles.module.css`.
+- SVGs are loaded via `require('@site/static/img/...').default`.
+
+## See Also
+
+- Docusaurus theming docs.
+- Component styling with CSS modules.
